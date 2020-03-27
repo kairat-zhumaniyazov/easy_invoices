@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      font-size: 14px;
+      text-align: justify;
+    }
+
+    .no-text-wrap {
+      white-space: nowrap;
+    }
+
+    .no-border {
+      border: 0 !important;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .container {
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    .requistes-table {
+      border-collapse: separate; 
+      border-spacing: 0 1.2em;
+    }
+
+    .requistes-table td.title {
+      font-weight: bold;
+      vertical-align: top;
+    }
+
+    .requistes-table td.separator {
+      width: 20px;
+    }
+
+    .ert {
+      text-align: left;
+      border-collapse: collapse; 
+      border-spacing: 0;
+      width: 100%;
+    }
+
+    .ert td {
+      vertical-align: top;
+      padding: 5px;
+      border: 1px solid #000000;
+    }
+
+    td.va-middle {
+      vertical-align: middle;
+    }
+
+    td.bbottom-0 {
+      border-bottom: 0;
+    }
+
+    td.btop-0 {
+      border-top: 0;
+    }
+
+    .ert-row-1, .ert-row-2, .ert-row-4 {
+      height: 70px;
+    }
+
+    .ert-row-3 {
+      height: 30px;
+    }
+
+    .ert-col-1 {
+      width: 60%;
+    }
+
+    .ert-col-2 {
+      width: 10%;
+    }
+
+    .ert-col-3 {
+      width: 30%;
+    }
+
+    .ert-col-flex {
+      height: 1px;
+    }
+
+    .ert-flex-wrapper {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .ert-desc {
+      font-size: .8em;
+    }
+
+    table.positions {
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    table.positions th {
+      white-space: nowrap;
+      padding: 3px 5px;
+      text-align: center;
+    }
+
+    .positions th, .positions td {
+      border: 1px solid black;
+    }
+
+    table.positions td {
+      padding: 3px 5px;
+    }
+
+    table.positions td.money {
+      padding: 3px 10px 3px 15px;
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    table.positions td.fantom {
+      border: 0;
+    }
+
+    .positions .total .title, .positions .nds .title {
+      text-align: right;
+      font-weight: bold;
+    }
+
+    .summary, .sum-in-words {
+      margin: 0;
+    }
+
+    .sum-in-words {
+      margin-bottom: 15px;
+    }
+
+    .terms-of-payment .title, .sum-in-words {
+      font-weight: bold;
+    }
+
+    .signatures-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .signatures {
+      width: 90%;
+    }
+
+    .signatures tr {
+      height: 50px;
+    }
+
+    .signatures td {
+      vertical-align: bottom;
+    }
+
+    .signatures .hr {
+      width: 30%;
+      vertical-align: bottom;
+      border-bottom: 1px solid #000000;
+    }
+
+    .signatures td.position {
+      vertical-align: bottom;
+      width: 80px;
+    }
+  </style>
+  <title><%= title %></title>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>
+        <%= title %>
+      </h1>
+    </div>
+
+    <div class="requistes">
+      <table class="requistes-table">
+        <tbody>
+
+          <tr>
+            <td class="title">Поставщик:</td>
+            <td class="separator">&nbsp;</td>
+            <td>
+              <%= supplier_requisites %>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+
+      <table class="ert" border="1">
+        <tr class="ert-row-1">
+          <td class="ert-col-1 bbottom-0" colspan="4">
+            <%= bank_name %>
+          </td>
+          <td class="ert-col-2">БИК</td>
+          <td class="ert-col-3">
+            <%= bank_bik %>
+          </td>
+        </tr>
+
+        <tr class="ert-row-2">
+          <td colspan="4" class="ert-col-flex btop-0">
+            <div class="ert-flex-wrapper">
+              <div>
+                <%= bank_city %>
+              </div>
+              <div class="ert-desc">
+                Банк получателя
+              </div>
+            </div>
+          </td>
+          <td>Сч. №</td>
+          <td>
+            <%= bank_account %>
+          </td>
+        </tr>
+
+        <tr class="ert-row-3">
+          <td class="text-center">ИНН</td>
+          <td class="text-center"><%= bank_inn %></td>
+          <td class="text-center">КПП</td>
+          <td class="text-center"><%= bank_kpp %></td>
+          <td class="bbottom-0"></td>
+          <td class="bbottom-0"></td>
+        </tr>
+        
+        <tr class="ert-row-4">
+          <td colspan="4" class="ert-col-flex">
+            <div class="ert-flex-wrapper">
+              <div>
+                <%= bank_recipient_name %>
+              </div>
+              <div class="ert-desc">
+                Получатель
+              </div>
+            </div>
+          </td>
+          <td class="va-middle btop-0">Сч. №</td>
+          <td class="va-middle btop-0">
+            <%= bank_recipient_account %>
+          </td>
+        </tr>
+      </table>
+
+
+      <table class="requistes-table">
+        <tbody>
+
+          <tr>
+            <td class="title">Покупатель:</td>
+            <td class="separator">&nbsp;</td>
+            <td>
+              <%= buyer_requisiter %>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+
+    <table class="positions">
+      <thead>
+        <th>№</th>
+        <th>Наименование товаров, работ, услуг</th>
+        <th>Кол-во</th>
+        <th>Ед. изм.</th>
+        <th>Цена</th>
+        <th>Всего</th>
+      </thead>
+
+      <tbody>
+        <% positions.each_with_index do |position, index| %>
+          <tr>
+            <td class="text-center"><%= index + 1 %></td>
+            <td><%= position[:name] %></td>
+            <td class="text-center"><%= position[:amount] %></td>
+            <td class="text-center"><%= position[:units] %></td>
+            <td class="text-center money">
+              <%= RuPropisju.delimited_number('%.2f' % position[:cost], ' ') %>
+            </td>
+            <td class="text-center money">
+              <%= RuPropisju.delimited_number('%.2f' % (position[:cost] * position[:amount]), ' ') %>
+            </td>
+          </tr>
+        <% end %>
+
+        <tr class="total">
+          <td class="fantom" colspan="3"></td>
+          <td class="title no-text-wrap no-border" colspan="2">Итого к оплате:</td>
+          <td class="text-center money">
+            <%= RuPropisju.delimited_number('%.2f' % total_sum, ' ') %>
+          </td>
+        </tr>
+
+        <tr class="nds">
+          <td class="fantom" colspan="3"></td>
+          <td class="title no-text-wrap no-border" colspan="2">Без налога (НДС)</td>
+          <td class="money"> - </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <div class="sums">
+      <p class="summary">
+        <span>
+          Всего наименовании
+        </span>
+        <span><%= positions.size %></span>
+        <span>
+          на сумму
+        </span>
+        <span>
+          <%= RuPropisju.digit_rublej(total_sum, :ru, EasyInvoices::Base::DIGIT_RUBLEJ) %>
+        </span>
+      </p>
+      <p class="sum-in-words">
+        <%= RuPropisju.rublej(total_sum, :ru, EasyInvoices::Base::DIGIT_RUBLEJ).capitalize %>
+      </p>
+    </div>
+
+    <div class="terms-of-payment">
+      <span class="title">Условия оплаты: </span>
+      <span>
+        <%= payment_terms %>
+      </span>
+    </div>
+
+    <div class="signatures-wrapper">
+      <table class="signatures">
+        <tr>
+          <td class="position">
+            Директор
+          </td>
+          <td class="devider">&nbsp;</td>
+          <td class="hr"></td>
+          <td class="fio">
+            <span>(</span>
+            <%= director_name %>
+            <span>)</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="position">
+            Бухгалтер
+          </td>
+          <td class="devider">&nbsp;</td>
+          <td class="hr">&nbsp;</td>
+          <td class="fio">
+            <span>(</span>
+            <%= buhgalter_name %>
+            <span>)</span>
+          </td>
+        </tr>
+      </table>
+
+      <% if with_signs && sings %>
+        <% sings.each_with_index do |sign, index| %>
+          <% size = EasyInvoices::BASE_SIGN_SIZE * sign[:scale] %>
+
+          <div class="faximile" id='sign_<%= index + 1 %>'
+            style='
+              position: absolute;
+              background-size: cover;
+              background-repeat: no-repeat;
+              width: <%= size %>px;
+              height: <%= size %>px;
+              top: <%= sign[:x] || 0 %>px;
+              left: <%= sign[:y] || 0 %>px;
+              background-color: <%= sign[:debug] ? '#dddddd' : '' %>;
+              background-image: url(<%= wicked_pdf_asset_base64("easy_invoices/#{sign[:file_name]}") %>);'>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+</body>
+</html>
