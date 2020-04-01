@@ -7,6 +7,10 @@ class EasyInvoices::Generator
     self.new(invoice_params, file_name).process
   end
 
+  def self.storage_dir
+    EasyInvoices.configuration.send(:"#{self.name.demodulize.downcase}_dir") || self::DIR
+  end
+
   def initialize(invoice_params, file_name)
     @invoice_params = invoice_params
     @file_name = file_name.nil? ? "#{SecureRandom.hex}.pdf" : "#{file_name}.pdf"
@@ -29,7 +33,7 @@ class EasyInvoices::Generator
   end
 
   def target_dir
-    Rails.root.join(*self.class::DIR)
+    Rails.root.join(*self.class.storage_dir)
   end
 
   def target_file
