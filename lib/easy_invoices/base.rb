@@ -1,7 +1,7 @@
 module EasyInvoices
   module Base
 
-    DIGIT_RUBLEJ = { always_show_fraction: true, fraction_formatter: '%d', integrals_delimiter: ' ' }
+    DIGIT_RUBLEJ = { always_show_fraction: true, fraction_formatter: '%.2d', integrals_delimiter: ' ' }
 
     def generate_act(options = {})
       generate_with(:act, options)
